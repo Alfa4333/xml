@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Carta ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,400;1,600&display=swap" rel="stylesheet">
+
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+
+body{
+
+    overflow:hidden;
+    background:linear-gradient(135deg,#ff4b7d,#ff7eb3,#ffd6e7);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    height:100vh;
+
+}
+
+
+/* Carta */
+
+.carta{
+
+    width:700px;
+    max-width:90%;
+
+    background:rgba(255,255,255,0.20);
+
+    backdrop-filter:blur(8px);
+
+    padding:40px;
+
+    border-radius:20px;
+
+    color:white;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.2);
+
+    animation:aparecer 2s;
+
+}
+
+
+.carta h2{
+
+    text-align:center;
+
+    font-size:45px;
+
+    margin-bottom:25px;
+
+}
+
+
+.carta p{
+
+    font-family:'Cormorant Garamond', serif;
+
+    font-style:italic;
+
+    font-size:30px;
+
+    text-align:justify;
+
+    line-height:1.5;
+
+}
+
+
+/* Entrada */
+
+@keyframes aparecer{
+
+from{
+
+opacity:0;
+
+transform:translateY(-50px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+
+
+/* Corazones */
+
+.corazon{
+
+    position:fixed;
+
+    top:-20px;
+
+    color:#ff2d75;
+
+    animation:caer linear forwards;
+
+    z-index:10;
+
+}
+
+
+@keyframes caer{
+
+
+0%{
+
+transform:translateY(-20px) rotate(0deg);
+
+opacity:1;
+
+}
+
+
+100%{
+
+transform:translateY(100vh) rotate(360deg);
+
+opacity:0;
+
+}
+
+
+}
+
+
+</style>
+
+</head>
+
+
+
+<body>
+
+
+<div class="carta">
+
+
+<h2>💌 Para Ti 💌</h2>
+
+
+<p>
+
+Desde el día en que llegaste a mi vida, muchas cosas comenzaron a tener un significado diferente. Cada conversación, cada sonrisa y cada momento compartido se han convertido en recuerdos que guardo con mucho cariño.
+
+<br><br>
+
+Me alegra poder tener a una persona como tú en mi vida, alguien que con su forma de ser hace que los días sean más bonitos y especiales.
+
+<br><br>
+
+Espero que estas palabras puedan sacarte una sonrisa y recordarte lo valiosa que eres. Nunca olvides que eres una persona increíble y que mereces todo lo bonito que la vida pueda regalarte.
+
+<br><br>
+
+Con mucho cariño. ❤️
+
+</p>
+
+
+</div>
+
+
+
+
+<script>
+
+
+function crearCorazon(){
+
+
+let corazon=document.createElement("div");
+
+
+corazon.className="corazon";
+
+
+corazon.innerHTML="❤️";
+
+
+
+corazon.style.left=Math.random()*100+"vw";
+
+
+corazon.style.fontSize=(15+Math.random()*45)+"px";
+
+corazon.style.animationDuration=(3+Math.random()*5)+"s";
+
+document.body.appendChild(corazon);
+
+setTimeout(()=>{
+
+corazon.remove();
+
+},8000);
+
+
+}
+
+setInterval(crearCorazon,100);
+
+
+</script>
+
+</body>
+
+</html>

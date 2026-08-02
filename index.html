@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Mi Amor ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    overflow:hidden;
+    background:linear-gradient(135deg,#ff4b7d,#ff7eb3,#ffd6e7);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.contenedor{
+    text-align:center;
+    color:white;
+    z-index:2;
+}
+
+h1{
+    font-size:60px;
+    animation: aparecer 2s ease;
+}
+
+p{
+    margin-top:20px;
+    font-size:25px;
+    animation: aparecer 3s ease;
+}
+
+.boton{
+    display:inline-block;
+    margin-top:35px;
+    padding:15px 35px;
+    font-size:20px;
+    border-radius:40px;
+    background:white;
+    color:#ff2d75;
+    text-decoration:none;
+    transition:.4s;
+}
+
+
+.boton:hover{
+    transform:scale(1.1);
+    background:#ff2d75;
+    color:white;
+}
+
+#mensaje{
+    margin-top:30px;
+    font-size:30px;
+    color:#fff;
+    font-weight:bold;
+}
+
+@keyframes aparecer{
+    from{
+        opacity:0;
+        transform:translateY(-40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* Corazones */
+
+.corazon{
+    position:absolute;
+    bottom:-30px;
+    color:red;
+    animation:subir linear infinite;
+}
+
+@keyframes subir{
+    0%{
+        transform:translateY(0) rotate(0deg);
+        opacity:1;
+    }
+
+    100%{
+        transform:translateY(-120vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="contenedor">
+
+<h1>❤️ Para la mujer que quiero ❤️</h1>
+
+<p>Eres la persona más hermosa que ha llegado a mi vida.</p>
+
+<a href="Carta.html" class="boton">Presiona Aquí 💖</a>
+
+<div id="mensaje"></div>
+
+</div>S
+
+<script>
+
+
+
+// Crear corazones
+
+function crearCorazon(){
+
+const corazon=document.createElement("div");
+
+corazon.classList.add("corazon");
+
+corazon.innerHTML="❤️";
+
+corazon.style.left=Math.random()*100+"vw";
+
+corazon.style.fontSize=(20+Math.random()*40)+"px";
+
+corazon.style.animationDuration=(3+Math.random()*4)+"s";
+
+document.body.appendChild(corazon);
+
+setTimeout(()=>{
+corazon.remove();
+},7000);
+
+}
+
+setInterval(crearCorazon,250);
+
+</script>
+
+</body>
+</html>
