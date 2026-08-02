@@ -10,7 +10,6 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,400;1,600&display=swap" rel="stylesheet">
 
-
 <style>
 
 *{
@@ -23,14 +22,14 @@
 
 body{
 
-    overflow:hidden;
+    overflow:auto;
     background:linear-gradient(135deg,#ff4b7d,#ff7eb3,#ffd6e7);
 
     display:flex;
     justify-content:center;
     align-items:center;
 
-    height:100vh;
+    min-height:100vh;
 
 }
 
@@ -41,6 +40,7 @@ body{
 
     width:700px;
     max-width:90%;
+    margin:20px;
 
     background:rgba(255,255,255,0.20);
 
@@ -155,7 +155,6 @@ opacity:0;
 </head>
 
 
-
 <body>
 
 
@@ -168,12 +167,16 @@ opacity:0;
 <p>
 Desde el día en que llegaste a mi vida, muchas cosas comenzaron a tener un significado diferente. Cada conversación, cada sonrisa y cada momento compartido se han convertido en recuerdos que guardo con mucho cariño.
 
-<br>
+<br><br>
+
 Me alegra poder tener a una persona como tú en mi vida, alguien que con su forma de ser hace que los días sean más bonitos y especiales.
-<br>
+
+<br><br>
+
 Espero que estas palabras puedan sacarte una sonrisa y recordarte lo valiosa que eres. Nunca olvides que eres una persona increíble y que mereces todo lo bonito que la vida pueda regalarte.
 
-<br>
+<br><br>
+
 Con mucho cariño. ❤️
 
 </p>
@@ -207,7 +210,9 @@ corazon.style.fontSize=(15+Math.random()*45)+"px";
 
 corazon.style.animationDuration=(3+Math.random()*5)+"s";
 
+
 document.body.appendChild(corazon);
+
 
 setTimeout(()=>{
 
@@ -218,10 +223,12 @@ corazon.remove();
 
 }
 
+
 setInterval(crearCorazon,100);
 
 
 </script>
+
 
 </body>
 
