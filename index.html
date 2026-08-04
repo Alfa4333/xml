@@ -4,67 +4,99 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Para Mi Amor ❤️</title>
-
+ 
 <style>
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:'Segoe UI', Arial, Helvetica, sans-serif;
 }
-
-body{
+ 
+html, body{
+    height:100%;
     overflow:hidden;
+}
+ 
+body{
     background:linear-gradient(135deg,#ff4b7d,#ff7eb3,#ffd6e7);
+    background-size:200% 200%;
+    animation:fondoMovil 12s ease infinite;
     display:flex;
     justify-content:center;
     align-items:center;
-    height:100vh;
+    min-height:100vh;
+    padding:20px;
+    position:relative;
 }
-
+ 
+@keyframes fondoMovil{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+ 
 .contenedor{
     text-align:center;
     color:white;
     z-index:2;
+    max-width:600px;
+    padding:20px;
 }
-
+ 
 h1{
-    font-size:60px;
-    animation: aparecer 2s ease;
+    font-size:clamp(28px, 6vw, 60px);
+    animation: aparecer 1.2s ease both;
+    text-shadow:0 4px 15px rgba(0,0,0,0.2);
+    line-height:1.3;
 }
-
+ 
 p{
     margin-top:20px;
-    font-size:25px;
-    animation: aparecer 3s ease;
+    font-size:clamp(16px, 3vw, 25px);
+    animation: aparecer 1.2s ease .3s both;
+    text-shadow:0 2px 8px rgba(0,0,0,0.15);
 }
-
+ 
 .boton{
     display:inline-block;
     margin-top:35px;
     padding:15px 35px;
-    font-size:20px;
+    font-size:clamp(16px, 3vw, 20px);
     border-radius:40px;
     background:white;
     color:#ff2d75;
     text-decoration:none;
-    transition:.4s;
+    font-weight:bold;
+    box-shadow:0 6px 20px rgba(0,0,0,0.25);
+    transition:.35s ease;
+    animation: aparecer 1.2s ease .6s both, pulso 2.4s ease-in-out 1.8s infinite;
+    position:relative;
 }
-
-
+ 
 .boton:hover{
-    transform:scale(1.1);
+    transform:scale(1.1) translateY(-3px);
     background:#ff2d75;
     color:white;
+    box-shadow:0 10px 25px rgba(0,0,0,0.35);
 }
-
+ 
+.boton:active{
+    transform:scale(0.97);
+}
+ 
+@keyframes pulso{
+    0%, 100%{ box-shadow:0 6px 20px rgba(0,0,0,0.25), 0 0 0 0 rgba(255,255,255,0.5);}
+    50%{ box-shadow:0 6px 20px rgba(0,0,0,0.25), 0 0 0 14px rgba(255,255,255,0);}
+}
+ 
 #mensaje{
     margin-top:30px;
-    font-size:30px;
+    font-size:clamp(18px, 3vw, 30px);
     color:#fff;
     font-weight:bold;
 }
-
+ 
 @keyframes aparecer{
     from{
         opacity:0;
@@ -75,77 +107,84 @@ p{
         transform:translateY(0);
     }
 }
-
+ 
 /* Corazones */
-
 .corazon{
-    position:absolute;
-    bottom:-30px;
-    color:red;
-    animation:subir linear infinite;
+    position:fixed;
+    bottom:-40px;
+    pointer-events:none;
+    will-change:transform, opacity;
+    z-index:1;
+    filter:drop-shadow(0 2px 4px rgba(0,0,0,0.15));
 }
-
+ 
 @keyframes subir{
     0%{
-        transform:translateY(0) rotate(0deg);
+        transform:translate(0,0) rotate(0deg);
         opacity:1;
     }
-
     100%{
-        transform:translateY(-120vh) rotate(360deg);
+        transform:translate(var(--desvio), -115vh) rotate(360deg);
         opacity:0;
     }
 }
-
-</style>
-
-</head>
-
-<body>
-
-<div class="contenedor">
-
-<h1>❤️ Para la mujer que quiero ❤️</h1>
-
-<p>Eres la persona más hermosa que ha llegado a mi vida.</p>
-
-<a href="Carta.html" class="boton">Presiona Aquí 💖</a>
-
-<div id="mensaje"></div>
-
-</div>
-
-<script>
-
-
-
-// Crear corazones
-
-function crearCorazon(){
-
-const corazon=document.createElement("div");
-
-corazon.classList.add("corazon");
-
-corazon.innerHTML="❤️";
-
-corazon.style.left=Math.random()*100+"vw";
-
-corazon.style.fontSize=(20+Math.random()*40)+"px";
-
-corazon.style.animationDuration=(3+Math.random()*4)+"s";
-
-document.body.appendChild(corazon);
-
-setTimeout(()=>{
-corazon.remove();
-},7000);
-
+ 
+@media (max-width:480px){
+    .boton{ padding:12px 28px; }
 }
-
-setInterval(crearCorazon,250);
-
+</style>
+ 
+</head>
+ 
+<body>
+ 
+<div class="contenedor">
+ 
+<h1>❤️ Para la mujer que quiero ❤️</h1>
+ 
+<p>Eres la persona más hermosa que ha llegado a mi vida.</p>
+ 
+<a href="Carta.html" class="boton">Presiona Aquí 💖</a>
+ 
+<div id="mensaje"></div>
+ 
+</div>
+ 
+<script>
+// Crear corazones con movimiento horizontal variable
+function crearCorazon(){
+    const corazon = document.createElement("div");
+    corazon.classList.add("corazon");
+    corazon.innerHTML = Math.random() > 0.15 ? "❤️" : "💖";
+ 
+    const inicioX = Math.random() * 100;
+    const desvio = (Math.random() * 160 - 80) + "px"; // deriva izquierda/derecha
+    const duracion = (4 + Math.random() * 4);
+    const tam = 16 + Math.random() * 34;
+ 
+    corazon.style.left = inicioX + "vw";
+    corazon.style.fontSize = tam + "px";
+    corazon.style.setProperty("--desvio", desvio);
+    corazon.style.animation = `subir ${duracion}s linear forwards`;
+ 
+    document.body.appendChild(corazon);
+ 
+    setTimeout(() => corazon.remove(), duracion * 1000 + 200);
+}
+ 
+// Limitar cantidad de corazones simultáneos para mejor rendimiento
+let intervaloCorazones = setInterval(crearCorazon, 280);
+ 
+// Pausar la generación si la pestaña no está visible (ahorra recursos)
+document.addEventListener("visibilitychange", () => {
+    if(document.hidden){
+        clearInterval(intervaloCorazones);
+    } else {
+        intervaloCorazones = setInterval(crearCorazon, 280);
+    }
+});
 </script>
-
+ 
 </body>
 </html>
+ 
